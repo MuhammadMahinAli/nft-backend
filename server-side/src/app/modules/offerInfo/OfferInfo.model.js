@@ -3,7 +3,7 @@ import { Schema, model } from "mongoose";
 const OfferInfoSchema = new Schema(
   {
     sellId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "SellList",
       index: true,
     },

@@ -9,7 +9,7 @@ const MarketPlaceSchema = new Schema(
     recipientCount: { type: Number },
     sales: [
       {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "SellList",
         index: true,
       },
@@ -17,8 +17,8 @@ const MarketPlaceSchema = new Schema(
     salesId: { type: Number },
     offerInfo: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Offer",
+        type: Schema.Types.ObjectId,
+        ref: "OfferInfo",
         index: true,
       },
     ],
@@ -26,8 +26,8 @@ const MarketPlaceSchema = new Schema(
     escrowAmount: { type: Object },
     auction: [
       {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Auction",
+        type: Schema.Types.ObjectId,
+        ref: "AuctionInfo",
         index: true,
       },
     ],
