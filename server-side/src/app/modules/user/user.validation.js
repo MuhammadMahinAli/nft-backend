@@ -1,6 +1,6 @@
 import {z} from "zod";
 //user roles
-const roleEnums = ["Admin", "Seller", "Buyer", "Designer"];
+const roleEnums = ["Admin", "Seller", "Buyer"];
 //
 export const createUserZodSchema = z.object({
   body: z
@@ -25,7 +25,9 @@ export const createUserZodSchema = z.object({
       phoneNumber: z.string({
         required_error: "Phone Number is required",
       }),
-      address: z.string().optional(),
+      address: z.string({
+        required_error: "Address is required",
+      }),
       role: z.enum([...roleEnums], {
         required_error: "Role is required",
       }),
@@ -48,11 +50,8 @@ export const updateUserZodSchema = z.object({
       email: z.string().email().optional(),
       phoneNumber: z.string().optional(),
       address: z.string().optional(),
-      country: z.string().optional(),
-      city: z.string().optional(),
-      zipCode: z.string().optional(),
       role: z.enum([...roleEnums]).optional(),
-      profileImg: z.string().optional(),
+      productsOwnerShip: z.string().optional(),
     })
     .strict(),
 });

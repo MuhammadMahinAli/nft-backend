@@ -46,16 +46,12 @@ export const deleteProductFromWishListService = async (payload) => {
 
 //----------delete wishlist
 export const deleteWishlistService = async (id) => {
-  const result = await WishList.findOneAndDelete({user: id}).populate({
-    path: "products",
-  });
+  const result = await WishList.findOneAndDelete({user: id});
   return result;
 };
 
 //----------get single wishlist
 export const getSingleWishListService = async (id) => {
-  const wishList = await WishList.findOne({user: id}).populate({
-    path: "products",
-  });
+  const wishList = await WishList.findOne({user: id});
   return wishList;
 };

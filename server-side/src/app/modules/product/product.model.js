@@ -19,26 +19,26 @@ const ProductSchema = new Schema(
     sku: {
       type: String,
       required: true,
-      // unique: true,
+      unique: true,
     },
     quantity: {
       type: Number,
-      // required: true,
+      required: true,
     },
     collections: [
       {
         type: {
           name: {
             type: String,
-            // required: true,
+            required: true,
           },
           collectionID: {
             type: Schema.Types.ObjectId,
-            // required: true,
+            required: true,
             ref: "Collection",
           },
         },
-        // required: true,
+        required: true,
       },
     ],
     colors: [
@@ -93,10 +93,6 @@ const ProductSchema = new Schema(
             type: Number,
             required: true,
           },
-          image: {
-            type: String,
-            // required: true,
-          },
         },
         required: true,
       },
@@ -106,19 +102,19 @@ const ProductSchema = new Schema(
       type: Number,
       default: 0,
     },
-    recyclePrice: {
-      type: Number,
-    },
-    reprintPrice: {
-      type: Number,
-    },
     image: {type: String},
-    images: [{type: String}],
-
+    volume: {
+      type: String,
+    },
     addedBy: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true,
+    },
+    addStatus: {
+      type: String,
+      default: "pending",
+      enum: ["pending", "approved", "rejected"],
     },
     market_X: {
       type: Boolean,
@@ -146,19 +142,6 @@ const ProductSchema = new Schema(
     hasOffers: {
       type: Boolean,
       default: false,
-    },
-    artist: {
-      type: Schema.Types.ObjectId,
-      ref: "Artist",
-    },
-    certified: {
-      type: Boolean,
-      default: false,
-    },
-    certificateReq: {
-      type: String,
-      default: "Not requested",
-      enum: ["pending", "approved", "rejected", "Not requested"],
     },
   },
   {

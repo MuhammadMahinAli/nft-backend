@@ -3,32 +3,14 @@ import {ApiError} from "../../../handleError/apiError.js";
 import {Collection} from "./collection.model.js";
 import {collectionSearchableFields, generateCollectionID} from "./collection.utils.js";
 import {sortingHelper} from "../../../utils/sortingHelper.js";
-import { ZodFirstPartyTypeKind } from "zod";
-import {addCollectionToProductService} from "../product/services/addCollectionToProduct.js";
-
 
 //----------create a new collection
 export const createCollectionService = async (payload) => {
   const collectionID = await generateCollectionID();
   const data = {collectionID, ...payload};
   const newCollection = await Collection.create(data);
-
   if (!newCollection) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Failed to create collection");
-  }
-  if (payload?.products?.length > 0) {
-    console.log(payload?.products);
-    // Make sure payload.products is an array before proceeding
-    if (Array.isArray(payload.products)) {
-      await Promise.all(
-        payload.products.map(async (product) => {
-          await addCollectionToProductService({product, collection: {name: payload.title, collectionID: newCollection?._id}});
-          // increasing quantity after adding product
-          newCollection.quantity++;
-        })
-      );
-    }
-    await newCollection.save();
   }
   return newCollection;
 };
@@ -69,7 +51,7 @@ export const getAllCollectionService = async (filters, sortingOptions) => {
 
 //-----------get single collection
 export const getSingleCollectionService = async (id) => {
-  const collection = await Collection.findOne({_id: id});
+  const collection = await Collection.findOne({collectionID: id});
   return collection;
 };
 //-----------update collection
@@ -84,7 +66,6 @@ export const updateCollectionService = async (id, payload) => {
   });
   return result;
 };
-
 //---------add product to collection
 export const addProductToCollectionService = async (id, product, session) => {
   const isExist = await Collection.findOne({_id: id});
@@ -164,9 +145,4 @@ export const addOwnerToCollectionService = async (id, owner, session) => {
   updatedCollection.mintedAt = Date.now();
   await updatedCollection.save({session});
   return updatedCollection;
-};
-
-export const getCollectionsBySellerService = async (id) => {
-  const collections = await Collection.find({addedBy: id});
-  return collections;
 };

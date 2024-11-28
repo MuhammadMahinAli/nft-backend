@@ -2,7 +2,9 @@ import { Schema, model } from "mongoose";
 
 const SellListSchema = new Schema(
   {
-    seller: { type: String },
+    seller: { 
+      type: Schema.Types.ObjectId,
+      ref: "User" },
     token: { type: String },
     tokenId: { type: Number },
     amountOfToken: { type: Number },

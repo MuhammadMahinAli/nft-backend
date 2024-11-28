@@ -13,45 +13,15 @@ export const createOrderService = async (payload) => {
   }
   return newOrder;
 };
-//-----------get all order by user
-export const getAllOrderByUserService = async (id) => {
-  const orders = await Order.find({orderedBy: id}).populate({
-    path: "products",
-    populate: {
-      path: "productID",
-    },
-  });
-  return orders;
-};
 //-----------get all order
-export const getAllOrderService = async () => {
-  const orders = await Order.find({}).populate({
-    path: "products",
-    populate: {
-      path: "productID",
-    },
-  });
-  return orders;
-};
-//-----------get orders by status
-export const getOrdersByStatusService = async (status, orderedBy) => {
-  const orders = await Order.find({status, orderedBy}).populate({
-    path: "products",
-    populate: {
-      path: "productID",
-    },
-  });
+export const getAllOrderByUserService = async (id) => {
+  const orders = await Order.find({orderedBy: id});
   return orders;
 };
 
 //-----------get single order
 export const getSingleOrderService = async (id) => {
-  const order = await Order.findOne({_id: id}).populate({
-    path: "products",
-    populate: {
-      path: "productID",
-    },
-  });
+  const order = await Order.findOne({_id: id});
   return order;
 };
 //-----------Update order status or payment

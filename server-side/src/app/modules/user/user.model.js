@@ -35,25 +35,12 @@ const UserSchema = new Schema(
     },
     address: {
       type: String,
+      required: true,
     },
-    country: {
-      type: String,
-    },
-    city: {
-      type: String,
-    },
-    zipCode: {
-      type: String,
-    },
-
     role: {
       type: String,
       required: true,
-      enum: ["Admin", "Seller", "Buyer", "Designer"],
-    },
-    
-    profileImg: {
-      type: String,
+      enum: ["Admin", "Seller", "Buyer"],
     },
   },
   {
@@ -62,7 +49,7 @@ const UserSchema = new Schema(
 );
 //check user exist
 UserSchema.methods.isUserExist = async function (email) {
-  const user = await User.findOne({email}, {_id: 1, email: 1, password: 1, role: 1});
+  const user = await User.findOne({email}, {email: 1, password: 1, role: 1});
   return user;
 };
 

@@ -2,17 +2,21 @@ import { Schema, model } from "mongoose";
 
 const MarketPlaceSchema = new Schema(
   {
-    admin: { type: String, required: true },
+    admin: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
     marketplaceFee: { type: Number },
     recipient: [{ type: String }],
     fee: [{ type: Number }],
     recipientCount: { type: Number },
-    sales: [
-      {
+    sales: [{
+      sellList:{
         type: Schema.Types.ObjectId,
         ref: "SellList",
         index: true,
       },
+    }
     ],
     salesId: { type: Number },
     offerInfo: [

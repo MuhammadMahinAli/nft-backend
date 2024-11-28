@@ -40,9 +40,6 @@ export const getAllProductService = async (filters, paginationOptions) => {
       populate: {
         path: "versionID",
       },
-    })
-    .populate({
-      path: "addedBy",
     });
   return {
     meta: {

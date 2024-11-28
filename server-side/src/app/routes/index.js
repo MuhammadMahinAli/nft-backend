@@ -5,28 +5,19 @@ import {VersionRoutes} from "../modules/version/version.routes.js";
 import {ProductRoutes} from "../modules/product/product.routes.js";
 import {CollectionRoutes} from "../modules/collection/collection.routes.js";
 import {LuckyDrawRoutes} from "../modules/luckyDraw/luckyDraw.routes.js";
-import {AuctionRoutes} from "../modules/auction/auction.routes.js";
 import {CartRoutes} from "../modules/cart/cart.routes.js";
 import {DropRoutes} from "../modules/drop/drop.routes.js";
 import {MintNFTRoutes} from "../modules/mintNFT/mintNFT.routes.js";
+import {NftMintRoutes} from "../modules/nftMint/nftMint.routes.js";
 import {NotificationRoutes} from "../modules/notification/notification.routes.js";
-import {OfferRoutes} from "../modules/offer/offer.routes.js";
 import {OrderRoutes} from "../modules/order/order.routes.js";
 import {RecycleRoutes} from "../modules/recycle/recycle.routes.js";
 import {WishListRoutes} from "../modules/wishList/wishList.routes.js";
-import {LuckyDrawTokenRoutes} from "../modules/luckyDrawToken/token.routes.js";
-import {DesignerDetailsRoutes} from "../modules/designerDetails/designerDetails.routes.js";
-import {DesignerCertificateRoutes} from "../modules/designerCertificate/designerCertificate.routes.js";
-import {DesignerEducationRoutes} from "../modules/designerEducation/designerEducation.routes.js";
-import {DesignerEarningRoutes} from "../modules/designerEarning/designerEarning.routes.js";
-import {DesignerPortfolioRoutes} from "../modules/designerPortfolio/designerPortfolio.routes.js";
-import {GigRoutes} from "../modules/gig/gig.routes.js";
-import {GigReviewRoutes} from "../modules/gigReview/gigReview.routes.js";
-import {GigPackagesRoutes} from "../modules/gigPackage/gigPackage.routes.js";
-import {GigFaqRoutes} from "../modules/gigFaq/gigFaq.routes.js";
-import {GigOrdersRoutes} from "../modules/gigOrder/gigOrder.routes.js";
-import {MessageRoutes} from "../modules/chat/message/message.routes.js";
-import {ConversationRoutes} from "../modules/chat/conversation/conversation.routes.js";
+import {MetaDataRoutes} from "../modules/metadata/metadata.routes.js";
+import { AuctionInfoRoutes } from "../modules/auctionInfo/auctionInfo.routes.js";
+import { MarketPlaceRoutes } from "../modules/marketplace/marketplace.routes.js";
+import { OfferInfoRoutes } from "../modules/offerInfo/offerInfo.routes.js";
+import { SellListRoutes } from "../modules/sellList/sellList.routes.js";
 
 const router = express.Router();
 const moduleRoutes = [
@@ -36,28 +27,19 @@ const moduleRoutes = [
   {path: "/version", route: VersionRoutes},
   {path: "/collection", route: CollectionRoutes},
   {path: "/luckyDraw", route: LuckyDrawRoutes},
-  {path: "/luckyDrawToken", route: LuckyDrawTokenRoutes},
-  {path: "/auction", route: AuctionRoutes},
   {path: "/cart", route: CartRoutes},
   {path: "/drop", route: DropRoutes},
   {path: "/mintNFT", route: MintNFTRoutes},
+  {path: "/nftMint", route: NftMintRoutes},
   {path: "/notification", route: NotificationRoutes},
-  {path: "/offer", route: OfferRoutes},
   {path: "/order", route: OrderRoutes},
   {path: "/recycle", route: RecycleRoutes},
   {path: "/wishlist", route: WishListRoutes},
-  {path: "/designerDetails", route: DesignerDetailsRoutes},
-  {path: "/designerEducations", route: DesignerEducationRoutes},
-  {path: "/designerCertificates", route: DesignerCertificateRoutes},
-  {path: "/designerEarnings", route: DesignerEarningRoutes},
-  {path: "/designerPortfolio", route: DesignerPortfolioRoutes},
-  {path: "/gigs", route: GigRoutes},
-  {path: "/gigReviews", route: GigReviewRoutes},
-  {path: "/gigPackages", route: GigPackagesRoutes},
-  {path: "/gigFaqs", route: GigFaqRoutes},
-  {path: "/gigOrders", route: GigOrdersRoutes},
-  {path: "/messages", route: MessageRoutes},
-  {path: "/conversations", route: ConversationRoutes},
+  {path: "/metadata", route: MetaDataRoutes},
+  {path: "/marketPlace", route: MarketPlaceRoutes},
+  {path: "/sellList", route: SellListRoutes},
+  {path: "/offer", route: OfferInfoRoutes},
+  {path: "/auction", route: AuctionInfoRoutes},
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 

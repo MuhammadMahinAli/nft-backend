@@ -7,41 +7,22 @@ const RecycleSchema = new Schema(
       required: true,
       ref: "User",
     },
-    productID: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "Product",
-    },
-    productImg: {
-      type: String,
-      required: true,
-    },
-    addedAt: {
-      type: String,
-      default: new Date(Date.now()),
-    },
-    recyclePrice: {
-      type: Number,
-    },
-    totalRequested: {
-      type: Number,
-      default: 0,
-    },
-    status: {
-      type: String,
-      default: "pending",
-      enum: ["pending", "processing", "done"],
-    },
-    reprintProductImg: {
-      type: String,
-    },
-    totalReprinted: {
-      type: Number,
-      default: 0,
-    },
-    reprintPrice: {
-      type: Number,
-    },
+
+    products: [
+      {
+        type: {
+          productID: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: "Product",
+          },
+          addedAt: {
+            type: Date,
+            default: new Date(Date.now()),
+          },
+        },
+      },
+    ],
   },
   {
     timestamps: true,

@@ -24,10 +24,6 @@ const LuckyDrawSchema = new Schema(
             required: true,
             ref: "Product",
           },
-          title: {
-            type: String,
-            required: true,
-          },
           addedBy: {
             type: Schema.Types.ObjectId,
             ref: "User",
@@ -47,10 +43,6 @@ const LuckyDrawSchema = new Schema(
         ref: "User",
       },
     ],
-    dueDate: {
-      type: String,
-      required: true,
-    },
   },
   {
     timestamps: true,

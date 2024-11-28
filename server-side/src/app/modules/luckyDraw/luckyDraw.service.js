@@ -14,12 +14,12 @@ export const createLuckyDrawService = async (data) => {
 
 //-----add product to lucky draw
 export const addProductToLuckyDrawService = async (id, product) => {
-  const luckyDraw = await LuckyDraw.findOne({_id: id});
+  const luckyDraw = await LuckyDraw.findOne({luckyDrawID: id});
   if (!luckyDraw) {
     throw new ApiError(httpStatus.NOT_FOUND, "luckydraw doesn't found!");
   }
   const results = await LuckyDraw.findOneAndUpdate(
-    {_id: id},
+    {luckyDrawID: id},
     {$push: {products: product}},
     {
       new: true,
@@ -107,15 +107,5 @@ export const setWinnerToLuckyDrawService = async (id, winner) => {
 //----------delete luckyDraw
 export const deleteLuckyDrawService = async (id) => {
   const result = await LuckyDraw.findByIdAndDelete({luckyDrawID: id});
-  return result;
-};
-//----------get all luckyDraw
-export const getAllDrawService = async () => {
-  const result = await LuckyDraw.find({});
-  return result;
-};
-//----------get single luckyDraw
-export const getSingleDrawService = async (id) => {
-  const result = await LuckyDraw.findOne({_id:id});
   return result;
 };

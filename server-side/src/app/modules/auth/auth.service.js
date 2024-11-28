@@ -19,12 +19,12 @@ export const loginUserService = async (payload) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, "password is incorrect");
   }
   //create accesstoken
-  const {email: userEmail, role, _id: userId} = isUserExist;
-  const token = createToken({userEmail, role, userId}, config.jwt.secret, {
+  const {email: userEmail, role} = isUserExist;
+  const token = createToken({userEmail, role}, config.jwt.secret, {
     expiresIn: config.jwt.expires_in,
   });
 
-  const refreshToken = createToken({userEmail, role, userId}, config.jwt.refresh_secret, {expiresIn: config.jwt.refresh_expires_in});
+  const refreshToken = createToken({userEmail, role}, config.jwt.refresh_secret, {expiresIn: config.jwt.refresh_expires_in});
 
   return {
     accessToken: token,
@@ -46,7 +46,7 @@ export const refreshTokenService = async (token) => {
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, "user doesn't found");
   }
-  const newAccessToken = createToken({email: isUserExist.email, role: isUserExist.role, userId: isUserExist._id}, config.jwt.secret, {expiresIn: config.jwt.expires_in});
+  const newAccessToken = createToken({email: isUserExist.email, role: isUserExist.role}, config.jwt.secret, {expiresIn: config.jwt.expires_in});
   return {
     accessToken: newAccessToken,
   };

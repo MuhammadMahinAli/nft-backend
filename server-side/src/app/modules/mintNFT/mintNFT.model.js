@@ -2,6 +2,16 @@ import {Schema, model} from "mongoose";
 
 const MintNFTSchema = new Schema(
   {
+    item: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "Product" || "Collection",
+    },
+    itemType: {
+      type: String,
+      required: true,
+      enum: ["product", "collection"],
+    },
     artist: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -11,27 +21,25 @@ const MintNFTSchema = new Schema(
       type: String,
       // required: true,
     },
-    description: {
+    artistName: {
       type: String,
-      required: true,
     },
-    title: {
+    artistAddress: {
       type: String,
-      required: true,
     },
-    price: {
-      type: Number,
-      required: true,
+    artistPhone: {
+      type: String,
     },
-    supply: {
-      type: Number,
-      // required: true,
+    nidOFArtist: {
+      type: String,
     },
 
-    listed: {
+    certified: {
       type: Boolean,
-      // required: true,
-      default: false,
+      required: true,
+    },
+    certificate: {
+      type: String,
     },
   },
   {

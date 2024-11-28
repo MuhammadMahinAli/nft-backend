@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import {sendResponse} from "../../../utils/sendResponse.js";
 import {catchAsync} from "../../../utils/catchAsync.js";
-import {createOrderService, deleteOrderService, getAllOrderByUserService, getAllOrderService, getOrdersByStatusService, getSingleOrderService, updateOrderService} from "./order.service.js";
+import {createOrderService, deleteOrderService, getAllOrderByUserService, getSingleOrderService, updateOrderService} from "./order.service.js";
 
 //-------create an order
 export const createOrder = catchAsync(async (req, res, next) => {
@@ -15,33 +15,10 @@ export const createOrder = catchAsync(async (req, res, next) => {
     data: newOrder,
   });
 });
-//-------get all Order by user
+//-------get all Order
 export const getAllOrderByUser = catchAsync(async (req, res) => {
   const id = req.params.id;
   const orders = await getAllOrderByUserService(id);
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "Orders retrieved successfully!",
-    data: orders,
-  });
-});
-//-------get all Order
-export const getAllOrder = catchAsync(async (req, res) => {
-  const orders = await getAllOrderService();
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "Orders retrieved successfully!",
-    data: orders,
-  });
-});
-//-------get Orders by status
-export const getOrdersByStatus = catchAsync(async (req, res) => {
-  const {status, orderedBy} = req?.query;
-  const orders = await getOrdersByStatusService(status, orderedBy);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

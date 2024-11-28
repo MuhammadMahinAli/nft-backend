@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import {catchAsync} from "../../../utils/catchAsync.js";
 import {sendResponse} from "../../../utils/sendResponse.js";
-import {addProductToVersionService, createVersionService, getProductsByVersionService, getSingleVersionService} from "./version.service.js";
+import {addProductToVersionService, createVersionService, getProductsByVersionService} from "./version.service.js";
 
 //--------create a version
 export const createVersion = catchAsync(async (req, res, next) => {
@@ -25,17 +25,5 @@ export const getProductsByVersion = catchAsync(async (req, res, next) => {
     success: true,
     message: "products retrieved successfully!",
     data: products,
-  });
-});
-//--------get single version
-export const getSingleVersion = catchAsync(async (req, res, next) => {
-  const {title} = req?.params;
-  const version = await getSingleVersionService(title);
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "version retrieved successfully!",
-    data: version,
   });
 });

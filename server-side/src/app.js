@@ -5,15 +5,16 @@ import router from "./app/routes/index.js";
 import {globalErrorHandler} from "./app/middlewars/gloalErrorHandler.js";
 
 const app = express();
+
 //
 app.use(cors());
 
 //parser
-app.use(express.json({ limit: '50mb' })); 
+app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 ////use route
-app.use("/api/v1", router); 
+app.use("/api/v1", router);
 //
 app.get("/", (req, res) => {
   res.send("Server is Listening..");
@@ -31,4 +32,3 @@ app.use((req, res, next) => {
   next();
 });
 export default app;
-

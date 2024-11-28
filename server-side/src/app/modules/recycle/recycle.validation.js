@@ -1,19 +1,17 @@
 import {z} from "zod";
 
-export const createRecycleZodSchema = z.object({
+export const addORDeleteProductToRecycleZodSchema = z.object({
   body: z
     .object({
       requestedBy: z.string({
         required_error: "requestedBy is required",
       }),
-      productID: z.string({
-        required_error: "productID is required",
+      product: z.string({
+        required_error: "product is required",
       }),
-      productImg: z.string({
-        required_error: "productImg is required",
+      add: z.boolean({
+        required_error: "add is required",
       }),
-
-      recyclePrice: z.number().optional(),
     })
     .strict(),
 });

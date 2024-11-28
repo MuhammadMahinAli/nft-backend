@@ -1,7 +1,7 @@
 import httpStatus from "http-status";
 import {catchAsync} from "../../../utils/catchAsync.js";
 import {sendResponse} from "../../../utils/sendResponse.js";
-import {addParticipantToLuckyDrawService, addProductToLuckyDrawService, createLuckyDrawService, deleteLuckyDrawService, deleteParticipantFromDrawService, deleteProductFromDrawService, getAllDrawService, getSingleDrawService, setWinnerToLuckyDrawService} from "./luckyDraw.service.js";
+import {addParticipantToLuckyDrawService, addProductToLuckyDrawService, createLuckyDrawService, deleteLuckyDrawService, deleteParticipantFromDrawService, deleteProductFromDrawService, setWinnerToLuckyDrawService} from "./luckyDraw.service.js";
 
 //-------create lucky draw
 export const createLuckyDraw = catchAsync(async (req, res, next) => {
@@ -13,28 +13,6 @@ export const createLuckyDraw = catchAsync(async (req, res, next) => {
     success: true,
     message: "luckyDraw created successfully!",
     data: luckyDraw,
-  });
-});
-//-------get all lucky draw
-export const getAllLuckyDraw = catchAsync(async (req, res, next) => {
-  const result = await getAllDrawService();
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "luckyDraw retrieved successfully!",
-    data: result,
-  });
-});
-//-------get all lucky draw
-export const getSingleLuckyDraw = catchAsync(async (req, res, next) => {
-  const result = await getSingleDrawService(req?.params?.id);
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "luckyDraw retrieved successfully!",
-    data: result,
   });
 });
 //-------add or delete product to lucky draw

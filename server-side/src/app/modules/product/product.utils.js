@@ -14,6 +14,6 @@ export const generateProductID = async () => {
   return newId;
 };
 //
-export const productFilterableFields = ["search", "recycleRequest", "addStatus", "sold", "currency", "market_X", "hasOffers", "onAuction", "listed", "certificateReq"];
+export const productFilterableFields = ["search", "recycleRequest", "addStatus", "sold", "currency", "market_X", "hasOffers", "onAuction"];
 //
 export const productSearchableFields = ["title", "description"];

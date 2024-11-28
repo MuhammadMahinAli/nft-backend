@@ -2,7 +2,10 @@ import { Schema, model } from "mongoose";
 
 const AuctionInfoSchema = new Schema(
   {
-    creator: { type: String },
+    creator: {
+       type: Schema.Types.ObjectId,
+        ref: "User"
+     },
     token: { type: String },
     highestBidder: { type: String },
     tokenId: { type: Number },

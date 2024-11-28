@@ -1,5 +1,5 @@
 import httpStatus from "http-status";
-import {createCollectionService, deleteCollectionService, getAllCollectionService, getCollectionsBySellerService, getSingleCollectionService, updateCollectionService} from "./collection.service.js";
+import {createCollectionService, deleteCollectionService, getAllCollectionService, getSingleCollectionService, updateCollectionService} from "./collection.service.js";
 import {sendResponse} from "../../../utils/sendResponse.js";
 import {catchAsync} from "../../../utils/catchAsync.js";
 import {pick} from "../../../utils/pick.js";
@@ -67,15 +67,5 @@ export const deleteCollection = catchAsync(async (req, res) => {
     success: true,
     message: "collection deleted successfully!",
     data: collection,
-  });
-});
-export const getCollectionsBySeller = catchAsync(async (req, res) => {
-  const collections = await getCollectionsBySellerService(req?.params?.id);
-
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: "collections retrieved successfully!",
-    data: collections,
   });
 });

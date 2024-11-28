@@ -13,6 +13,7 @@ export const globalErrorHandler = (error, req, res, next) => {
   let errorMessages = [];
 
   //decide which response to show according to error
+
   if (error?.name === "ValidationError") {
     const simplifiedError = handleValidationError(error);
     statusCode = simplifiedError.statusCode;

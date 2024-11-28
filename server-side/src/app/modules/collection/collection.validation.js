@@ -12,7 +12,13 @@ export const createCollectionZodSchema = z.object({
       image: z.string({
         required_error: "image is required",
       }),
-      products: z.array(z.string()).optional(),
+      products: z
+        .array(
+          z.object({
+            productID: z.string(),
+          })
+        )
+        .optional(),
       addedBy: z.string({
         required_error: "AddedBy is required",
       }),

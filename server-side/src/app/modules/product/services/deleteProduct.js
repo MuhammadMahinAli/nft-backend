@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
-import { Product } from "../product.model.js";
-import { ApiError } from "../../../../handleError/apiError.js";
+import {Product} from "../product.model.js";
+import {ApiError} from "../../../../handleError/apiError.js";
 import httpStatus from "http-status";
-import { deleteProductFromDifferentVersions } from "../../version/version.utils.js";
-import { deleteProductFromCollections } from "../../collection/collection.utils.js";
+import {deleteProductFromDifferentVersions} from "../../version/version.utils.js";
+import {deleteProductFromCollections} from "../../collection/collection.utils.js";
 
 //-----delete a  product
 export const deleteProductService = async (id) => {
@@ -12,9 +12,7 @@ export const deleteProductService = async (id) => {
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
-    const product = await Product.findOneAndDelete({ _id: id }).session(
-      session
-    );
+    const product = await Product.findOneAndDelete({_id: id}).session(session);
     if (!product) {
       throw new ApiError(httpStatus.BAD_REQUEST, "Failed to delete product");
     }

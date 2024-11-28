@@ -18,7 +18,7 @@ export const generateVersionID = async () => {
 export const generateVersionProperty = (versions) => {
   const newVersions = [];
   versions?.forEach((version) => {
-    newVersions.push({name: version?.name, versionID: version?.versionID, price: version?.price, image: version?.image});
+    newVersions.push({name: version?.name, versionID: version?.versionID, price: version?.price});
   });
   return newVersions;
 };

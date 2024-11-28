@@ -23,16 +23,6 @@ export const getSingleUserService = async (email) => {
   const user = await User.findOne({email});
   return user;
 };
-//get single user
-export const getSingleUserByIdService = async (id) => {
-  const user = await User.findOne({_id: id});
-  return user;
-};
-//get user by role
-export const getSingleUserServiceByRole = async (role) => {
-  const user = await User.find({role});
-  return user;
-};
 //update user
 export const updateUserService = async (id, payload) => {
   const isExist = await User.findOne({_id: id});
