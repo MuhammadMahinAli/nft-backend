@@ -2,7 +2,7 @@
 
 MarketPlace:
 
--- "http://localhost:3000/api/v1/marketPlace/getAllMarketPlaceByAdmin/:id"
+- "http://localhost:3000/api/v1/marketPlace/getAllMarketPlaceByAdmin/:id"
 "http://localhost:3000/api/v1/marketPlace/getAll"
 
 Offer Info:
