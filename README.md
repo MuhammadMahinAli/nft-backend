@@ -42,3 +42,9 @@ Token Information:
 - "http://localhost:3000/api/v1/tokenInfo/getTokenById/:id"
 - "http://localhost:3000/api/v1/tokenInfo/getTokenByNftId/:id"
 
+
+Mint Nft:
+
+- "http://localhost:3000/api/v1/nftMint/store-minted-nft"
+- "http://localhost:3000/api/v1/nftMint/getAll"
+
