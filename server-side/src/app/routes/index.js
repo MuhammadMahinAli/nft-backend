@@ -18,6 +18,13 @@ import { AuctionInfoRoutes } from "../modules/auctionInfo/auctionInfo.routes.js"
 import { MarketPlaceRoutes } from "../modules/marketplace/marketplace.routes.js";
 import { OfferInfoRoutes } from "../modules/offerInfo/offerInfo.routes.js";
 import { SellListRoutes } from "../modules/sellList/sellList.routes.js";
+import { NftRoutes } from "../modules/nft/nft.routes.js";
+import { NftCollectionRoutes } from "../modules/nftCollection/nftCollection.routes.js";
+import { TokenInfoRoutes } from "../modules/tokenInfo/tokenInfo.routes.js";
+import { NftActivityRoutes } from "../modules/nftActivity/nftActivity.routes.js";
+
+
+
 
 const router = express.Router();
 const moduleRoutes = [
@@ -40,6 +47,10 @@ const moduleRoutes = [
   {path: "/sellList", route: SellListRoutes},
   {path: "/offer", route: OfferInfoRoutes},
   {path: "/auction", route: AuctionInfoRoutes},
+  {path: "/nft", route: NftRoutes},
+  {path: "/nftCollection", route: NftCollectionRoutes},
+  {path: "/tokenInfo", route: TokenInfoRoutes},
+  {path: "/nftActivity", route: NftActivityRoutes},
 ];
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
 

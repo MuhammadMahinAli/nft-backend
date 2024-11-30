@@ -1,8 +1,8 @@
 import express from "express";
-import { getAllOfferInfoBySellIdController, getAllOfferInfoController } from "./offerInfo.controller.js";
+import { getAllOfferInfoBySellIdController, getAllOfferInfoController, saveOfferInfoController } from "./offerInfo.controller.js";
 const router = express.Router();
 
-
+router.post("/create-new", saveOfferInfoController);
 router.get("/getAllOfferBySellId/:id", getAllOfferInfoBySellIdController);
 router.get("/getAll", getAllOfferInfoController);
 

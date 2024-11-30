@@ -69,6 +69,8 @@ export const createProductZodSchema = z.object({
             required_error: "price is required",
           }),
           chain: z.string().optional(),
+          discountDeadline: z.string().optional(),
+          discountPercent: z.number().optional(),
           supplyChain: z.string().optional(),
           weight: z.string().optional(),
           status: z.enum([...statusEnums]).optional(),

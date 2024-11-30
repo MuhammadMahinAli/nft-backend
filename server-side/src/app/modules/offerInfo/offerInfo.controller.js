@@ -1,8 +1,22 @@
 import {catchAsync} from "../../../utils/catchAsync.js";
 import {sendResponse} from "../../../utils/sendResponse.js";
 import httpStatus from "http-status";
-import { getAllOfferInfoBySellIdService, getAllOfferInfoService } from "./offerInfo.service.js";
+import { getAllOfferInfoBySellIdService, getAllOfferInfoService, saveOfferInfoService } from "./offerInfo.service.js";
 
+
+//------- save Paypal Info
+
+export const saveOfferInfoController = catchAsync(async (req, res, next) => {
+  const data = req.body;
+  const newOfferInfo = await saveOfferInfoService(data);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Offer Info is saved successfully!",
+    data: newOfferInfo,
+  });
+});
 
 //----- all offer info by sell id
 

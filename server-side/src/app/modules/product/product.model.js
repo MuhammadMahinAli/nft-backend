@@ -1,4 +1,4 @@
-import {Schema, model} from "mongoose";
+import { Schema, model } from "mongoose";
 
 const ProductSchema = new Schema(
   {
@@ -102,7 +102,7 @@ const ProductSchema = new Schema(
       type: Number,
       default: 0,
     },
-    image: {type: String},
+    image: { type: String },
     volume: {
       type: String,
     },
@@ -131,6 +131,13 @@ const ProductSchema = new Schema(
     sold: {
       type: Boolean,
       default: false,
+    },
+    discountDeadline: {
+      type: Date,
+    },
+    discountPercent: {
+      type: Number,
+      default: 0,
     },
     availability: {
       type: Boolean,
