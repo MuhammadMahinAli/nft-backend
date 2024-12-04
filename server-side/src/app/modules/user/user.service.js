@@ -1,6 +1,6 @@
 import httpStatus from "http-status";
-import {ApiError} from "../../../handleError/apiError.js";
-import {User} from "./user.model.js";
+import { ApiError } from "../../../handleError/apiError.js";
+import { User } from "./user.model.js";
 
 // create user / signUp user
 export const createUserService = async (userInfo) => {
@@ -8,7 +8,7 @@ export const createUserService = async (userInfo) => {
   if (!result) {
     throw new ApiError(httpStatus.BAD_REQUEST, "Failed to create user");
   }
-  const {password, ...newUser} = result;
+  const { password, ...newUser } = result;
   return newUser;
 };
 
@@ -18,41 +18,37 @@ export const createUserService = async (userInfo) => {
 //   return users;
 // };
 
-
-
 export const getAllUserService = async (role) => {
   let users;
-  
-  if (role === 'Seller') {
+
+  if (role === "Seller") {
     // Admin sees all users
     users = await User.find({});
-  } else if (role === 'Seller') {
+  } else if (role === "Seller") {
     // Seller sees only users with the 'Seller' role
-    users = await User.find({ role: 'Seller' }, { password: 0 });
+    users = await User.find({ role: "Seller" }, { password: 0 });
   } else {
     // Regular users see limited data
     users = await User.find({}, { password: 0, email: 0 });
   }
-  
+
   return users;
 };
 
-
-
 //get single user
 export const getSingleUserService = async (email) => {
-  const user = await User.findOne({email});
+  const user = await User.findOne({ email });
   return user;
 };
 //update user
 export const updateUserService = async (id, payload) => {
-  const isExist = await User.findOne({_id: id});
+  const isExist = await User.findOne({ _id: id });
   if (!isExist) {
-    throw new ApiError(httpStatus.NOT_FOUND, "User doesn't found");
+    throw new ApiError(httpStatus.NOT_FOUND, "Invalid user");
   }
-  const {name, ...userData} = payload;
+  const { name, ...userData } = payload;
 
-  const updatedUserData = {...userData};
+  const updatedUserData = { ...userData };
   //updated nested field name
   if (name && Object.keys(name).length > 0) {
     Object.keys(name).forEach((key) => {
@@ -61,7 +57,7 @@ export const updateUserService = async (id, payload) => {
     });
   }
 
-  const result = await User.findOneAndUpdate({_id: id}, updatedUserData, {
+  const result = await User.findOneAndUpdate({ _id: id }, updatedUserData, {
     new: true,
   });
   return result;
@@ -69,6 +65,6 @@ export const updateUserService = async (id, payload) => {
 
 //delete user
 export const deleteUserService = async (id) => {
-  const result = await User.findByIdAndDelete({_id: id});
+  const result = await User.findByIdAndDelete({ _id: id });
   return result;
 };

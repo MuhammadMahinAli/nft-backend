@@ -3,8 +3,7 @@ import { getAllMarketPlaceByAdminController, getAllMarketPlaceController } from 
 const router = express.Router();
 import {authorization} from '../../middlewars/authorization.js'
 
-router.use(authorization);
-
+router.use(authorization("Seller", "Buyer"));
 router.get("/getAllMarketPlaceByAdmin/:id", getAllMarketPlaceByAdminController);
 router.get("/getAll", getAllMarketPlaceController);
 

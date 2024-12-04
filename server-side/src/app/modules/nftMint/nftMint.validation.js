@@ -3,9 +3,6 @@ import { z } from "zod";
 export const storeMintedNftZodSchema = z.object({
   body: z
     .object({
-      user: z.string({
-        required_error: "User is required",
-      }),
       title: z.string({
         required_error: "Title is required",
       }),
@@ -13,7 +10,7 @@ export const storeMintedNftZodSchema = z.object({
         required_error: "Description is required",
       }),
       copy: z.number({
-        required_error: "Price is required",
+        required_error: "Copy is required",
       }),
       price: z.number({
         required_error: "Price is required",

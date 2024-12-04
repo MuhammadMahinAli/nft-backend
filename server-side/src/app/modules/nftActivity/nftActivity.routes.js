@@ -3,7 +3,7 @@ import { getNftActivityByNftIdController,getNftActivityByIdController } from "./
 const router = express.Router();
 import {authorization} from '../../middlewars/authorization.js'
 
-router.use(authorization);
+router.use(authorization("Seller", "Buyer"));
 
 router.get("/getNftActivityById/:id", getNftActivityByIdController);
 router.get("/getNftActivityByNftId/:id", getNftActivityByNftIdController);

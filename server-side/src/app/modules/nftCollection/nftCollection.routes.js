@@ -3,8 +3,7 @@ import {getAllNftCollectionController,getNftCollectionByIdController } from './n
 const router = express.Router();
 import {authorization} from '../../middlewars/authorization.js'
 
-router.use(authorization);
-
+router.use(authorization("Seller", "Buyer"));
 
 router.get("/getNftCollectionById/:id", getNftCollectionByIdController);
 router.get("/getAll", getAllNftCollectionController);
