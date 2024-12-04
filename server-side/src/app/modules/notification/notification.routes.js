@@ -4,6 +4,9 @@ import {createNotificationZodSchema} from "./notification.validation.js";
 import {addNotification, deleteNotification, getAllNotification, getNotificationByUserId, getSingleNotification, updateStatus} from "./notification.controller.js";
 
 const router = express.Router();
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
 
 router.post("/", validateRequest(createNotificationZodSchema), addNotification);
 router.get("/getAll", getAllNotification);

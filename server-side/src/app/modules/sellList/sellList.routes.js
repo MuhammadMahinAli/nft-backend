@@ -1,6 +1,9 @@
 import express from "express";
 import { getAllSellLisController, getAllSellListBySellerController } from "./sellList.controller.js";
 const router = express.Router();
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
 
 
 router.get("/getAllSellListBySeller/:id", getAllSellListBySellerController);

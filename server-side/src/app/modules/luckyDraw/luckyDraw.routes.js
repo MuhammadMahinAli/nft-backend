@@ -5,6 +5,10 @@ import {validateRequest} from "../../middlewars/validateRequest.js";
 
 const router = express.Router();
 
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
+
 router.post("/", validateRequest(createLuckyDrawZodSchema), createLuckyDraw);
 router.post("/addProduct", addOrDeleteProductToLuckyDraw);
 router.post("/deleteProduct", addOrDeleteProductToLuckyDraw);

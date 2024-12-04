@@ -35,7 +35,7 @@ Nft Collection:
 Nft Activity:
 
 - "http://localhost:3000/api/v1/nftActivity/getNftActivityById/:id"
-- "http://localhost:3000/api/v1/nftActivity/getNftActivityByNftId"
+- "http://localhost:3000/api/v1/nftActivity/getNftActivityByNftId/:id"
 
 Token Information:
 
@@ -47,4 +47,6 @@ Mint Nft:
 
 - "http://localhost:3000/api/v1/nftMint/store-minted-nft"
 - "http://localhost:3000/api/v1/nftMint/getAll"
+
+
 

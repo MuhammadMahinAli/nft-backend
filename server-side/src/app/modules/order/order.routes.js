@@ -4,6 +4,9 @@ import {createOrderZodSchema, updateOrderZodSchema} from "./order.validation.js"
 import {createOrder, deleteOrder, getAllOrderByUser, getSingleOrder, updateOrder} from "./order.controller.js";
 
 const router = express.Router();
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
 
 router.post("/", validateRequest(createOrderZodSchema), createOrder);
 router.get("/getByUser/:id", getAllOrderByUser);

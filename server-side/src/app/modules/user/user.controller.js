@@ -2,6 +2,7 @@ import {createUserService, deleteUserService, getAllUserService, getSingleUserSe
 import {catchAsync} from "../../../utils/catchAsync.js";
 import {sendResponse} from "../../../utils/sendResponse.js";
 import httpStatus from "http-status";
+import { User } from "./user.model.js";
 
 //------create an user
 export const createUser = catchAsync(async (req, res, next) => {
@@ -15,17 +16,31 @@ export const createUser = catchAsync(async (req, res, next) => {
     data: newUser,
   });
 });
-//-------get all users
+// //-------get all users
+// export const getAllUsers = catchAsync(async (req, res) => {
+//   const users = await getAllUserService();
+
+//   sendResponse(res, {
+//     statusCode: httpStatus.OK,
+//     success: true,
+//     message: "Users retrieved successfully!",
+//     data: users,
+//   });
+// });
+
 export const getAllUsers = catchAsync(async (req, res) => {
-  const users = await getAllUserService();
+  const { role } = req.user;
+  
+  const users = await getAllUserService(role);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Users retrieved successfully!",
+    message: 'Users retrieved successfully!',
     data: users,
   });
 });
+
 //------get single user
 export const getSingleUser = catchAsync(async (req, res) => {
   const email = req.params.email;

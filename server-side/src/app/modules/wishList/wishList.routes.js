@@ -4,6 +4,9 @@ import {validateRequest} from "../../middlewars/validateRequest.js";
 import {addORDeleteProductToWishlistZodSchema} from "./wishList.validation.js";
 
 const router = express.Router();
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
 
 router.post("/addProduct", validateRequest(addORDeleteProductToWishlistZodSchema), addOrDeleteProductToWishList);
 router.post("/deleteProduct", validateRequest(addORDeleteProductToWishlistZodSchema), addOrDeleteProductToWishList);

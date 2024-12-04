@@ -4,6 +4,9 @@ import {validateRequest} from "../../middlewars/validateRequest.js";
 import {addORDeleteProductToRecycleZodSchema} from "./recycle.validation.js";
 
 const router = express.Router();
+import {authorization} from '../../middlewars/authorization.js'
+
+router.use(authorization);
 
 router.post("/", validateRequest(addORDeleteProductToRecycleZodSchema), addOrDeleteProductToRecycle);
 router.post("/deleteProduct", validateRequest(addORDeleteProductToRecycleZodSchema), addOrDeleteProductToRecycle);

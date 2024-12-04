@@ -12,11 +12,32 @@ export const createUserService = async (userInfo) => {
   return newUser;
 };
 
-///get all users
-export const getAllUserService = async () => {
-  const users = await User.find({});
+// ///get all users
+// export const getAllUserService = async () => {
+//   const users = await User.find({});
+//   return users;
+// };
+
+
+
+export const getAllUserService = async (role) => {
+  let users;
+  
+  if (role === 'Seller') {
+    // Admin sees all users
+    users = await User.find({});
+  } else if (role === 'Seller') {
+    // Seller sees only users with the 'Seller' role
+    users = await User.find({ role: 'Seller' }, { password: 0 });
+  } else {
+    // Regular users see limited data
+    users = await User.find({}, { password: 0, email: 0 });
+  }
+  
   return users;
 };
+
+
 
 //get single user
 export const getSingleUserService = async (email) => {
