@@ -2,16 +2,24 @@ import cors from "cors";
 import express from "express";
 import httpStatus from "http-status";
 import router from "./app/routes/index.js";
-import {globalErrorHandler} from "./app/middlewars/gloalErrorHandler.js";
+import { globalErrorHandler } from "./app/middlewars/gloalErrorHandler.js";
 
 const app = express();
 
 //
-app.use(cors());
+app.use(
+  cors(
+    // can access from any origin
+    {
+      origin: ["http://localhost:5173"],
+      credentials: true,
+    }
+  )
+);
 
 //parser
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 ////use route
 app.use("/api/v1", router);
@@ -27,7 +35,7 @@ app.use((req, res, next) => {
   res.status(httpStatus.NOT_FOUND).json({
     success: false,
     message: "Not found",
-    errorMessgaes: [{path: req.originalUrl, message: "Api not found"}],
+    errorMessgaes: [{ path: req.originalUrl, message: "Api not found" }],
   });
   next();
 });

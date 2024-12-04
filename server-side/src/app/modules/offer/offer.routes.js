@@ -6,8 +6,7 @@ import {validateRequest} from "../../middlewars/validateRequest.js";
 const router = express.Router();
 import {authorization} from '../../middlewars/authorization.js'
 
-router.use(authorization);
-
+router.use(authorization("Seller", "Buyer"));
 router.post("/", validateRequest(createOfferZodSchema), createOffer);
 router.post("/addBidder/:id", addBidderToOffer);
 router.delete("/:id", deleteOffer);

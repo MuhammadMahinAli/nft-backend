@@ -1,13 +1,9 @@
 import express from "express";
-import {validateRequest} from "../../middlewars/validateRequest.js";
-import {loginZodSchema} from "./auth.validation.js";
-import {loginUser} from "./auth.controller.js";
+import { validateRequest } from "../../middlewars/validateRequest.js";
+import { loginZodSchema } from "./auth.validation.js";
+import { loginUser, refreshToken } from "./auth.controller.js";
 const router = express.Router();
 
-import {authorization} from '../../middlewars/authorization.js'
-
-router.use(authorization);
-
 router.post("/login", validateRequest(loginZodSchema), loginUser);
-
+router.get("/refresh-token", refreshToken);
 export const AuthRoutes = router;
