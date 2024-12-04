@@ -12,7 +12,7 @@ export const getNftByIdService = async (id) => {
 
 //-----------get all nft 
 export const getAllNftService = async () => {
-    const allNft = await NFT.find({})
+    const allNft = await NFT.findOne({})
       .sort({ createdAt: -1 });
     return allNft;
   };

@@ -6,7 +6,7 @@ import { NFTCollection } from "./nftCollection.model.js";
 
 //-----------get nft collection by id
 export const getNftCollectionByIdService = async (id) => {
-    const nftCollectionById = await NFTCollection.find({ _id : id })
+    const nftCollectionById = await NFTCollection.findOne({ _id : id })
       .populate("allNft.nft")
       .populate("tokenDetails")
       .sort({ createdAt: -1 });

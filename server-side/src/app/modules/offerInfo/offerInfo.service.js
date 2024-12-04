@@ -18,7 +18,7 @@ export const saveOfferInfoService = async (formData) => {
 
 //-----------get all offer by sell Id
 export const getAllOfferInfoBySellIdService = async (id) => {
-    const OfferInfoBySellId = await OfferInfo.find({ sellId : id })
+    const OfferInfoBySellId = await OfferInfo.findOne({ sellId : id })
       .populate("sellId")
       .sort({ createdAt: -1 });
     return OfferInfoBySellId;

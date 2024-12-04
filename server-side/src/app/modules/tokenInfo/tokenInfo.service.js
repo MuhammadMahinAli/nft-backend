@@ -4,7 +4,7 @@ import { TokenInfo } from "./tokenInfo.model.js";
 
 //-----------get tokenInfo by id
 export const getTokenInfoByIdService = async (id) => {
-    const tokenInfoById = await TokenInfo.find({ _id : id })
+    const tokenInfoById = await TokenInfo.findOne({ _id : id })
       .populate("tokenOfNft")
       .sort({ createdAt: -1 });
     return tokenInfoById;
